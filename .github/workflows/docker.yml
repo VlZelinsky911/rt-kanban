@@ -3,7 +3,7 @@ name: Docker Build & Push
 on:
   push:
     branches:
-      - main   
+      - main
   workflow_dispatch:
 
 jobs:
@@ -31,8 +31,8 @@ jobs:
       - name: Build & Push API
         uses: docker/build-push-action@v6
         with:
-          context: ./apps/api
-          file: Dockerfile
+          context: .
+          file: ./apps/api/Dockerfile
           push: true
           tags: |
             ghcr.io/${{ github.repository_owner }}/rt-kanban-api:latest
@@ -42,8 +42,8 @@ jobs:
       - name: Build & Push Web
         uses: docker/build-push-action@v6
         with:
-          context: ./apps/web
-          file: Dockerfile
+          context: .
+          file: ./apps/web/Dockerfile
           push: true
           tags: |
             ghcr.io/${{ github.repository_owner }}/rt-kanban-web:latest
